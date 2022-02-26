@@ -1,5 +1,6 @@
 package com.skyoo.intent_20220226_exam
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
@@ -14,6 +15,8 @@ class MainActivity : AppCompatActivity() {
         btnMoveOther.setOnClickListener {
 
             // OtherActivity 화면으로 이동하는 코드...
+            val myIntent = Intent(this, OtherActivity::class.java)
+            startActivity(myIntent)
 
 
         }

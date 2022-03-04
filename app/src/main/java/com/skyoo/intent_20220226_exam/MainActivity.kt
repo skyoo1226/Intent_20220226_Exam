@@ -66,6 +66,15 @@ class MainActivity : AppCompatActivity() {
             startActivity(myIntent)
         }
 
+        btnCall.setOnClickListener {
+
+//            사용법이 맞게 작성되어도, 권한문제로 앱 강제종료 됨
+            val inputPhoneNum = edtPhoneNum.text.toString()
+            val myUri = Uri.parse("tel:${inputPhoneNum}")
+            val myIntent = Intent( Intent.ACTION_CALL, myUri )
+            startActivity(myIntent)
+        }
+
 
 
     }

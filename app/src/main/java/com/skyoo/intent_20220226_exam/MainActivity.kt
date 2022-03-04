@@ -1,5 +1,6 @@
 package com.skyoo.intent_20220226_exam
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -48,6 +49,26 @@ class MainActivity : AppCompatActivity() {
             val myIntent = Intent(this, EditNicknameActivity::class.java)
             // 1000은 닉네임을 변경하러 간다는 표식 임을 requestCode에 1000 대신 위에 멤버변수로 지정 한 REQ_CODE_NICKNAME을 입력함.
             startActivityForResult(myIntent, REQ_CODE_NICKNAME)
+
+        }
+
+    }
+//  onActivityResult 입력 시 2줄 자동 생성. super.onActivityResult(re...까지
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+//        어떤 요청을 마치고 돌아온건지 확인. => 닉네임을 가지러 다녀온게 맞는지?
+    if (requestCode == REQ_CODE_NICKNAME) {
+
+//            OK눌렀어야 반영. => RESULT_OK가 맞는가?
+        if (resultCode == Activity.RESULT_OK) {
+
+//                닉네임 요청과  OK 둘다 맞으면
+//                첨부된 새 닉네임을 꺼내서 텍스트뷰에 반영
+            val newNickname = data?.getStringExtra("nick")
+            txtNickname.text = newNickname
+
+            }
 
         }
 

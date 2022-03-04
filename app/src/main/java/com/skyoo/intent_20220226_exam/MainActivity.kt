@@ -2,6 +2,7 @@ package com.skyoo.intent_20220226_exam
 
 import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
@@ -51,6 +52,21 @@ class MainActivity : AppCompatActivity() {
             startActivityForResult(myIntent, REQ_CODE_NICKNAME)
 
         }
+
+        btnDial.setOnClickListener {
+//            어디에 전화를 걸고싶은지? 폰번 저장
+            val inputPhoneNum = edtPhoneNum.text.toString()
+
+//            전화연결 정보 형태 (Uri)로, 폰번 가공.
+            // 어디에 전화를 걸지 정보 가공. "tel: 띄어쓰기 없이 적어야 에러 없음.
+            val myUri = Uri.parse("tel:${inputPhoneNum}")
+
+//            전화 앱으로 화면 전환
+            val myIntent = Intent( Intent.ACTION_DIAL, myUri )
+            startActivity(myIntent)
+        }
+
+
 
     }
 //  onActivityResult 입력 시 2줄 자동 생성. super.onActivityResult(re...까지

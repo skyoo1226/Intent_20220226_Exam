@@ -6,6 +6,10 @@ import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
+//    멤버변수 입력 - 코드 초반부 첫번째 {에 만드는 변수
+    val REQ_CODE_NICKNAME = 1000
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -35,6 +39,15 @@ class MainActivity : AppCompatActivity() {
             myIntent.putExtra("메세지", inputMessage)
 
             startActivity(myIntent)
+
+        }
+
+//        유투브 1:56분 참조  - 닉네일 변경. Intent(3) 강의
+        btnEditNickname.setOnClickListener {
+
+            val myIntent = Intent(this, EditNicknameActivity::class.java)
+            // 1000은 닉네임을 변경하러 간다는 표식 임을 requestCode에 1000 대신 위에 멤버변수로 지정 한 REQ_CODE_NICKNAME을 입력함.
+            startActivityForResult(myIntent, REQ_CODE_NICKNAME)
 
         }
 

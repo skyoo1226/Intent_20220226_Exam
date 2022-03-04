@@ -86,6 +86,18 @@ class MainActivity : AppCompatActivity() {
             startActivity(myIntent)
         }
 
+        btnNaverLink.setOnClickListener {
+            val myUri = Uri.parse("https://naver.com")  //사이트 연결은 'https://'으로 시작
+            val myIntent = Intent( Intent.ACTION_VIEW, myUri )
+            startActivity(myIntent)
+        }
+
+        btnKakaoAppLink.setOnClickListener {
+            val myUri = Uri.parse("market://details?id=com.kakao.talk") //앱 연결은 'market://'으로 시작
+            val myIntent = Intent( Intent.ACTION_VIEW, myUri )
+            startActivity(myIntent)
+        }
+
 
 
     }
